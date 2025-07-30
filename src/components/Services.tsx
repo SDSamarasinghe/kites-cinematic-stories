@@ -31,16 +31,24 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="py-24 bg-cinematic-gradient">
-      <div className="max-w-7xl mx-auto px-6">
+    <section className="relative py-24 bg-cinematic-gradient overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{ 
+          backgroundImage: 'radial-gradient(circle at 2px 2px, hsl(var(--primary)) 2px, transparent 0)',
+          backgroundSize: '50px 50px'
+        }}></div>
+      </div>
+      
+      <div className="relative max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-6">
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-6 animate-slide-in-left">
             Our Creative
-            <span className="block bg-gold-gradient bg-clip-text text-transparent">
+            <span className="block bg-premium-gradient bg-clip-text text-transparent">
               Services
             </span>
           </h2>
-          <p className="font-poppins text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="font-poppins text-lg text-muted-foreground max-w-2xl mx-auto animate-slide-in-right">
             From concept to creation, we offer comprehensive creative solutions 
             that elevate your brand and connect with your audience.
           </p>
@@ -50,22 +58,36 @@ const Services = () => {
           {services.map((service, index) => (
             <Card 
               key={service.title}
-              className="group bg-card border-border hover:border-primary/50 transition-all duration-300 
-                         hover:shadow-cinematic hover:scale-105 animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="group relative bg-card/80 backdrop-blur-glass border border-border/50 
+                         hover:border-primary/50 transition-all duration-500 hover:shadow-glow 
+                         hover:scale-105 animate-fade-in overflow-hidden"
+              style={{ animationDelay: `${index * 0.15}s` }}
             >
-              <CardContent className="p-8 text-center">
-                <div className="mb-6 inline-flex items-center justify-center w-16 h-16 
-                               bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors duration-300">
-                  <service.icon className="w-8 h-8 text-primary group-hover:scale-110 transition-transform duration-300" />
+              {/* Gradient Overlay */}
+              <div className="absolute inset-0 bg-premium-gradient opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
+              
+              <CardContent className="relative p-8 text-center z-10">
+                <div className="mb-6 inline-flex items-center justify-center w-20 h-20 
+                               bg-primary/10 rounded-full group-hover:bg-primary/20 transition-all duration-500
+                               group-hover:shadow-glow group-hover:animate-float">
+                  <service.icon className="w-10 h-10 text-primary group-hover:scale-125 transition-all duration-500" />
                 </div>
-                <h3 className="font-playfair text-xl font-semibold text-foreground mb-4">
+                <h3 className="font-playfair text-xl font-semibold text-foreground mb-4 
+                               group-hover:text-primary transition-colors duration-300">
                   {service.title}
                 </h3>
                 <p className="font-poppins text-muted-foreground leading-relaxed">
                   {service.description}
                 </p>
               </CardContent>
+              
+              {/* Animated Border */}
+              <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <div className="absolute top-0 left-0 w-full h-px bg-premium-gradient transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-left"></div>
+                <div className="absolute bottom-0 right-0 w-full h-px bg-premium-gradient transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 origin-right"></div>
+                <div className="absolute top-0 left-0 w-px h-full bg-premium-gradient transform scale-y-0 group-hover:scale-y-100 transition-transform duration-700 origin-top"></div>
+                <div className="absolute bottom-0 right-0 w-px h-full bg-premium-gradient transform scale-y-0 group-hover:scale-y-100 transition-transform duration-700 origin-bottom"></div>
+              </div>
             </Card>
           ))}
         </div>

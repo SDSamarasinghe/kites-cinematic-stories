@@ -3,13 +3,21 @@ import heroImage from "@/assets/hero-cinematic.jpg";
 
 const Hero = () => {
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
+    <section className="relative h-screen flex items-center justify-center overflow-hidden bg-mesh-gradient">
+      {/* Background Image with Enhanced Overlay */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-80"
         style={{ backgroundImage: `url(${heroImage})` }}
       >
         <div className="absolute inset-0 bg-hero-overlay"></div>
+      </div>
+      
+      {/* Floating Elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-20 left-10 w-32 h-32 bg-primary/10 rounded-full blur-xl animate-parallax-float"></div>
+        <div className="absolute bottom-20 right-10 w-48 h-48 bg-secondary/10 rounded-full blur-2xl animate-float" style={{ animationDelay: '2s' }}></div>
+        <div className="absolute top-1/2 left-1/4 w-20 h-20 bg-primary/20 rounded-full blur-lg animate-float" style={{ animationDelay: '4s' }}></div>
+        <div className="absolute top-1/3 right-1/3 w-24 h-24 bg-primary/15 rounded-full blur-lg animate-parallax-float" style={{ animationDelay: '1s' }}></div>
       </div>
       
       {/* Hero Content */}

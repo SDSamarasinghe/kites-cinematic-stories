@@ -56,6 +56,18 @@
     /* Shadows */
     --shadow-cinematic: 0 25px 50px -12px hsl(210 11% 4% / 0.8);
     --shadow-gold: 0 10px 30px hsl(43 96% 56% / 0.3);
+    --shadow-elegant: 0 20px 40px -10px hsl(210 11% 4% / 0.6);
+    --shadow-glow: 0 0 60px hsl(43 96% 56% / 0.4);
+    
+    /* Glass morphism */
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    
+    /* Enhanced gradients */
+    --premium-gradient: linear-gradient(135deg, hsl(43 96% 56%), hsl(38 92% 50%), hsl(20 90% 48%));
+    --subtle-gradient: linear-gradient(135deg, hsl(215 15% 12%), hsl(220 18% 15%));
+    --mesh-gradient: radial-gradient(circle at 25% 25%, hsl(43 96% 56% / 0.2) 0%, transparent 50%), 
+                     radial-gradient(circle at 75% 75%, hsl(20 90% 48% / 0.2) 0%, transparent 50%);
   }
 }
 
