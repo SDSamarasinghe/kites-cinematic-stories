@@ -1,5 +1,6 @@
 import { Card, CardContent } from "@/components/ui/card";
 import { Star } from "lucide-react";
+import { useEffect, useRef } from "react";
 
 const testimonials = [
   {
@@ -19,12 +20,70 @@ const testimonials = [
     company: "Fashion Forward",
     quote: "Working with their team was seamless. They understood our vision and delivered photography that was both artistic and commercially successful.",
     rating: 5
+  },
+  {
+    name: "David Park",
+    company: "Urban Collective",
+    quote: "Their 3D design work brought our architectural concepts to life in ways we never imagined. Absolutely stunning and incredibly detailed.",
+    rating: 5
+  },
+  {
+    name: "Lisa Thompson",
+    company: "Creative Studios",
+    quote: "The social media campaign they crafted resulted in a 300% increase in engagement. Their understanding of visual storytelling is unmatched.",
+    rating: 5
+  },
+  {
+    name: "James Wilson",
+    company: "Tech Innovations",
+    quote: "Professional, creative, and results-driven. Their digital campaigns have consistently exceeded our ROI expectations.",
+    rating: 5
   }
 ];
 
 const Testimonials = () => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const scrollContainer = scrollContainerRef.current;
+    if (!scrollContainer) return;
+
+    let scrollAmount = 0;
+    const scrollStep = 1;
+    const maxScroll = scrollContainer.scrollWidth - scrollContainer.clientWidth;
+
+    const autoScroll = () => {
+      scrollAmount += scrollStep;
+      if (scrollAmount >= maxScroll) {
+        scrollAmount = 0;
+      }
+      scrollContainer.scrollTo({
+        left: scrollAmount,
+        behavior: 'smooth'
+      });
+    };
+
+    const interval = setInterval(autoScroll, 50);
+
+    // Pause on hover
+    const handleMouseEnter = () => clearInterval(interval);
+    const handleMouseLeave = () => {
+      const newInterval = setInterval(autoScroll, 50);
+      return newInterval;
+    };
+
+    scrollContainer.addEventListener('mouseenter', handleMouseEnter);
+    scrollContainer.addEventListener('mouseleave', handleMouseLeave);
+
+    return () => {
+      clearInterval(interval);
+      scrollContainer.removeEventListener('mouseenter', handleMouseEnter);
+      scrollContainer.removeEventListener('mouseleave', handleMouseLeave);
+    };
+  }, []);
+
   return (
-    <section className="relative py-24 bg-subtle-gradient overflow-hidden">
+    <section id="testimonials" className="relative py-24 bg-subtle-gradient overflow-hidden">
       {/* Background Elements */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-10 left-5 w-64 h-64 bg-primary/5 rounded-full blur-3xl animate-float"></div>
@@ -46,13 +105,21 @@ const Testimonials = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {/* Horizontal Scrolling Container */}
+        <div 
+          ref={scrollContainerRef}
+          className="flex gap-8 overflow-x-auto scrollbar-hide pb-4"
+          style={{ 
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none'
+          }}
+        >
           {testimonials.map((testimonial, index) => (
             <Card 
               key={testimonial.name}
               className="group relative bg-card/50 backdrop-blur-glass border border-glass-border 
                          hover:border-primary/50 transition-all duration-500 hover:shadow-glow 
-                         hover:scale-105 animate-fade-in overflow-hidden"
+                         hover:scale-105 animate-fade-in overflow-hidden flex-shrink-0 w-80"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               {/* Card Background Gradient */}

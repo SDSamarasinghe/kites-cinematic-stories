@@ -6,7 +6,7 @@ import { MessageCircle, Mail, Phone, MapPin } from "lucide-react";
 
 const Contact = () => {
   return (
-    <section className="py-24 bg-cinematic-gradient">
+    <section id="contact" className="py-24 bg-cinematic-gradient">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-6">

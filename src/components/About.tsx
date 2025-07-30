@@ -2,7 +2,7 @@ import teamImage from "@/assets/team-photo.jpg";
 
 const About = () => {
   return (
-    <section className="py-24 bg-cinematic-gradient">
+    <section id="about" className="py-24 bg-cinematic-gradient">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <div className="animate-fade-in">

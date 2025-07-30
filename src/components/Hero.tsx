@@ -3,7 +3,7 @@ import heroImage from "@/assets/hero-cinematic.jpg";
 
 const Hero = () => {
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden bg-mesh-gradient">
+    <section id="home" className="relative h-screen flex items-center justify-center overflow-hidden bg-mesh-gradient">
       {/* Background Image with Enhanced Overlay */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-80"
