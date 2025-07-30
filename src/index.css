@@ -75,6 +75,10 @@
   * {
     @apply border-border;
   }
+
+  body {
+    @apply bg-background text-foreground;
+  }
 }
 
 /* Hide scrollbar for testimonials */
@@ -85,9 +89,4 @@
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
-}
-
-  body {
-    @apply bg-background text-foreground;
-  }
 }
