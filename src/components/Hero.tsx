@@ -23,15 +23,15 @@ const Hero = () => {
       {/* Hero Content */}
       <div className="relative z-10 text-center max-w-6xl mx-auto px-6">
         <h1 className="font-playfair text-5xl md:text-7xl lg:text-8xl font-bold text-foreground mb-6 animate-fade-in">
-          Crafting Cinematic
+          Professional Visual
           <span className="block bg-gold-gradient bg-clip-text text-transparent animate-fade-in-delay">
-            Stories That Connect
+            Storytelling
           </span>
         </h1>
         
         <p className="font-poppins text-lg md:text-xl text-muted-foreground mb-12 max-w-2xl mx-auto animate-slide-up">
-          We bring your vision to life through stunning photography, cinematic videography, 
-          and powerful digital campaigns that resonate with your audience.
+          Capturing life's precious moments through exceptional photography and videography. 
+          From weddings to corporate events, we create lasting memories with artistic excellence.
         </p>
         
         <Button 

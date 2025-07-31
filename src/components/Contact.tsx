@@ -10,14 +10,14 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Let's Create
+            Let's Capture Your
             <span className="block bg-gold-gradient bg-clip-text text-transparent">
-              Together
+              Special Moments
             </span>
           </h2>
           <p className="font-poppins text-lg text-muted-foreground max-w-2xl mx-auto">
-            Ready to bring your vision to life? Get in touch and let's discuss 
-            how we can elevate your brand through powerful visual storytelling.
+            Ready to book your photography session? Contact us today to discuss your vision 
+            and let us create beautiful memories that will last a lifetime.
           </p>
         </div>
         
@@ -44,7 +44,7 @@ const Contact = () => {
                 </div>
                 <div>
                   <Textarea 
-                    placeholder="Tell us about your project..."
+                    placeholder="Tell us about your event or photography needs..."
                     rows={5}
                     className="bg-background border-border focus:border-primary resize-none"
                   />
@@ -69,8 +69,8 @@ const Contact = () => {
                 Get in touch
               </h3>
               <p className="font-poppins text-muted-foreground mb-8 leading-relaxed">
-                We're here to answer your questions and discuss your creative needs. 
-                Choose the method that works best for you.
+                We're here to help you plan your perfect photo session. Whether it's a wedding, 
+                portrait, or special event, let's discuss how we can capture your story.
               </p>
             </div>
             

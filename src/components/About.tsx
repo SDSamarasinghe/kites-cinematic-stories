@@ -13,27 +13,27 @@ const About = () => {
               </span>
             </h2>
             <p className="font-poppins text-lg text-muted-foreground mb-6 leading-relaxed">
-              Founded on the belief that every brand has a unique story to tell, Kites Image 
-              combines artistic vision with cutting-edge technology to create visual experiences 
-              that captivate and inspire.
+              At Kites Image, we believe every moment deserves to be captured with artistic excellence. 
+              Specializing in wedding photography, event coverage, and professional portraits, 
+              we combine creative storytelling with technical expertise.
             </p>
             <p className="font-poppins text-lg text-muted-foreground mb-8 leading-relaxed">
-              Our passionate team of creatives brings together expertise in photography, 
-              videography, and digital marketing to deliver results that exceed expectations 
-              and elevate your brand presence.
+              Our team is passionate about creating timeless memories that you'll treasure forever. 
+              From intimate ceremonies to grand celebrations, we capture the emotions, details, 
+              and authentic moments that make your story unique.
             </p>
             <div className="grid grid-cols-3 gap-8">
               <div className="text-center">
                 <div className="font-playfair text-3xl font-bold bg-gold-gradient bg-clip-text text-transparent">
-                  500+
+                  200+
                 </div>
                 <div className="font-poppins text-sm text-muted-foreground">
-                  Projects Completed
+                  Weddings Captured
                 </div>
               </div>
               <div className="text-center">
                 <div className="font-playfair text-3xl font-bold bg-gold-gradient bg-clip-text text-transparent">
-                  5
+                  3+
                 </div>
                 <div className="font-poppins text-sm text-muted-foreground">
                   Years Experience
@@ -41,10 +41,10 @@ const About = () => {
               </div>
               <div className="text-center">
                 <div className="font-playfair text-3xl font-bold bg-gold-gradient bg-clip-text text-transparent">
-                  98%
+                  100%
                 </div>
                 <div className="font-poppins text-sm text-muted-foreground">
-                  Client Satisfaction
+                  Happy Couples
                 </div>
               </div>
             </div>
