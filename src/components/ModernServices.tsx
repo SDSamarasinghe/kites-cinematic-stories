@@ -7,37 +7,37 @@ import { Button } from "@/components/ui/button";
 const services = [
   {
     icon: Camera,
-    title: "Photography",
-    description: "Capturing moments with artistic precision and cinematic flair that tells your unique story",
-    features: ["Portrait Sessions", "Event Photography", "Commercial Shoots"],
+    title: "Visual Content Creation",
+    description: "Professional photography and videography that captures your brand's essence and engages your audience across all platforms",
+    features: ["Product Photography", "Brand Video Content", "Social Media Visuals"],
     color: "from-blue-500/20 to-purple-500/20"
   },
   {
     icon: Video,
-    title: "Videography", 
-    description: "Creating compelling visual narratives that engage and inspire your audience",
-    features: ["Brand Films", "Event Coverage", "Documentary Style"],
+    title: "Social Media Strategy", 
+    description: "Data-driven social media strategies tailored to restaurants, gyms, and automotive businesses that drive real results",
+    features: ["Platform Strategy", "Content Planning", "Community Management"],
     color: "from-red-500/20 to-orange-500/20"
   },
   {
     icon: Palette,
-    title: "Branding",
-    description: "Crafting distinctive brand identities that leave lasting impressions",
-    features: ["Logo Design", "Brand Strategy", "Visual Identity"],
+    title: "Brand Development",
+    description: "Creating cohesive brand identities that resonate with your customers and differentiate you from the competition",
+    features: ["Brand Identity", "Logo Design", "Marketing Materials"],
     color: "from-green-500/20 to-emerald-500/20"
   },
   {
     icon: Share2,
-    title: "Social Media",
-    description: "Building authentic connections through strategic social presence",
-    features: ["Content Creation", "Strategy Planning", "Community Building"],
+    title: "Digital Marketing",
+    description: "End-to-end digital marketing campaigns that elevate your brand and connect with your target audience effectively",
+    features: ["PPC Advertising", "SEO Optimization", "Email Marketing"],
     color: "from-pink-500/20 to-rose-500/20"
   },
   {
     icon: Globe,
-    title: "Digital Campaigns",
-    description: "Driving results with data-driven digital marketing strategies",
-    features: ["Campaign Design", "Analytics", "ROI Optimization"],
+    title: "Analytics & Growth",
+    description: "Performance tracking and optimization strategies that deliver measurable growth for your business",
+    features: ["Performance Analytics", "Growth Strategy", "ROI Optimization"],
     color: "from-indigo-500/20 to-blue-500/20"
   }
 ];

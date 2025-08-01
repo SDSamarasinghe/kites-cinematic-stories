@@ -38,9 +38,9 @@ const ModernHero = () => {
   };
 
   const stats = [
-    { icon: Camera, label: "Projects", value: "150+" },
-    { icon: Award, label: "Awards", value: "25+" },
-    { icon: Users, label: "Happy Clients", value: "100+" },
+    { icon: Camera, label: "Campaigns", value: "250+" },
+    { icon: Award, label: "Growth Rate", value: "300%" },
+    { icon: Users, label: "Happy Clients", value: "120+" },
   ];
 
   return (
@@ -86,7 +86,7 @@ const ModernHero = () => {
         {/* Subtitle */}
         <motion.div variants={itemVariants} className="mb-6">
           <span className="inline-flex items-center px-4 py-2 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-poppins font-medium backdrop-blur-sm">
-            ✨ Award-Winning Cinematic Stories
+            ✨ Digital Marketing Excellence Since 2020
           </span>
         </motion.div>
 
@@ -95,13 +95,13 @@ const ModernHero = () => {
           variants={itemVariants}
           className="font-playfair text-4xl md:text-6xl lg:text-8xl font-bold text-foreground mb-8 leading-tight"
         >
-          Crafting Stories That
+          Elevating Your Business
           <motion.span 
             className="block bg-gradient-to-r from-primary via-secondary to-primary bg-clip-text text-transparent bg-[length:200%_auto]"
             animate={{ backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"] }}
             transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
           >
-            Move Hearts
+            to New Heights
           </motion.span>
         </motion.h1>
 
@@ -110,8 +110,8 @@ const ModernHero = () => {
           variants={itemVariants}
           className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-12 font-poppins leading-relaxed"
         >
-          We transform moments into cinematic masterpieces that resonate with your audience. 
-          From concept to final cut, every frame tells your unique story.
+          We create compelling visual stories and data-driven social media strategies that help restaurants, 
+          gyms, automotive businesses, and SMBs thrive in the digital age. From viral content to authentic engagement.
         </motion.p>
 
         {/* CTA Buttons */}
@@ -130,7 +130,7 @@ const ModernHero = () => {
                 whileHover={{ x: "100%" }}
                 transition={{ duration: 0.5 }}
               />
-              <span className="relative">Start Your Story</span>
+              <span className="relative">Launch Your Brand</span>
             </Button>
           </motion.div>
 
@@ -140,7 +140,7 @@ const ModernHero = () => {
           >
             <Button variant="outline" size="lg" className="group px-8 py-4 border-primary/30 hover:border-primary hover:bg-primary/5 text-foreground font-poppins font-semibold text-lg">
               <Play className="w-5 h-5 mr-2 group-hover:scale-110 transition-transform" />
-              Watch Our Reel
+              See Our Work
             </Button>
           </motion.div>
         </motion.div>

@@ -33,7 +33,7 @@ const ModernFooter = () => {
   const socialIcons = [
     { icon: Instagram, href: "https://instagram.com", label: "Instagram", color: "hover:bg-pink-500" },
     { icon: Facebook, href: "https://facebook.com", label: "Facebook", color: "hover:bg-blue-500" },
-    { icon: Mail, href: "mailto:hello@kitesimage.com", label: "Email", color: "hover:bg-primary" },
+    { icon: Mail, href: "mailto:hello@kitesdigital.com", label: "Email", color: "hover:bg-primary" },
     { icon: Phone, href: "tel:+1234567890", label: "Phone", color: "hover:bg-green-500" },
   ];
 
@@ -45,11 +45,11 @@ const ModernFooter = () => {
   ];
 
   const services = [
-    { name: "Photography", href: "#services" },
-    { name: "Videography", href: "#services" },
-    { name: "Branding", href: "#services" },
-    { name: "Social Media", href: "#services" },
-    { name: "Digital Campaigns", href: "#services" },
+    { name: "Visual Content", href: "#services" },
+    { name: "Social Strategy", href: "#services" },
+    { name: "Brand Development", href: "#services" },
+    { name: "Digital Marketing", href: "#services" },
+    { name: "Analytics & Growth", href: "#services" },
   ];
 
   const scrollToTop = () => {
@@ -92,37 +92,37 @@ const ModernFooter = () => {
                   }}
                   transition={{ duration: 5, repeat: Infinity, ease: "linear" }}
                 >
-                  Kites Image
+                  Kites Digital
                 </motion.h3>
                 <p className="text-xs text-muted-foreground font-poppins">
-                  Cinematic Stories
+                  Digital Marketing Excellence
                 </p>
               </div>
             </motion.div>
             
             <p className="font-poppins text-muted-foreground mb-8 leading-relaxed max-w-md">
-              Crafting cinematic stories that connect brands with their audiences 
-              through powerful visual storytelling and creative excellence.
+              Elevating restaurants, gyms, and automotive businesses through strategic 
+              digital marketing and compelling visual storytelling that drives real results.
             </p>
             
             {/* Contact Info */}
             <div className="space-y-3 mb-8">
               <motion.a
-                href="mailto:hello@kitesimage.com"
+                href="mailto:hello@kitesdigital.com"
                 className="flex items-center text-muted-foreground hover:text-primary transition-colors group"
                 whileHover={{ x: 5 }}
               >
                 <Mail className="w-4 h-4 mr-3 group-hover:scale-110 transition-transform" />
-                <span className="font-poppins text-sm">hello@kitesimage.com</span>
+                <span className="font-poppins text-sm">hello@kitesdigital.com</span>
               </motion.a>
               
               <motion.a
-                href="tel:+1234567890"
+                href="tel:+15559876543"
                 className="flex items-center text-muted-foreground hover:text-primary transition-colors group"
                 whileHover={{ x: 5 }}
               >
                 <Phone className="w-4 h-4 mr-3 group-hover:scale-110 transition-transform" />
-                <span className="font-poppins text-sm">+1 (555) 123-4567</span>
+                <span className="font-poppins text-sm">+1 (555) 987-6543</span>
               </motion.a>
               
               <motion.div
@@ -287,7 +287,7 @@ const ModernFooter = () => {
               whileHover={{ scale: 1.02 }}
             >
               <p className="font-poppins text-sm text-muted-foreground mr-2">
-                © 2024 Kites Image. Made with
+                © 2024 Kites Digital. Made with
               </p>
               <motion.div
                 animate={{ scale: [1, 1.2, 1] }}

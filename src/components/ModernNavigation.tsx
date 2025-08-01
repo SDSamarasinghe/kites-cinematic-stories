@@ -16,16 +16,22 @@ const ModernNavigation = () => {
   useEffect(() => {
     const handleScroll = () => {
       const sections = ["home", "about", "services", "portfolio", "contact"];
-      const currentSection = sections.find(section => {
+      let foundSection = null;
+      for (const section of sections) {
         const element = document.getElementById(section);
         if (element) {
           const rect = element.getBoundingClientRect();
-          return rect.top <= 100 && rect.bottom >= 100;
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            foundSection = section;
+            break;
+          }
         }
-        return false;
-      });
-      if (currentSection) {
-        setActiveSection(currentSection);
+      }
+      // If at the very top of the page, always select 'home'
+      if (window.scrollY < 50) {
+        setActiveSection("home");
+      } else if (foundSection) {
+        setActiveSection(foundSection);
       }
     };
 
@@ -42,9 +48,13 @@ const ModernNavigation = () => {
   ];
 
   const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    if (href === "#home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      const element = document.querySelector(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
     }
     setIsOpen(false);
   };
@@ -118,7 +128,7 @@ const ModernNavigation = () => {
                   Kites
                 </h1>
                 <p className="text-xs text-muted-foreground font-poppins">
-                  Cinematic Stories
+                  Digital Marketing
                 </p>
               </div>
             </div>
@@ -151,27 +161,7 @@ const ModernNavigation = () => {
             ))}
           </div>
 
-          {/* CTA Button */}
-          <div className="hidden md:block">
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              <Button
-                size="sm"
-                className="group bg-primary hover:bg-primary/90 text-primary-foreground font-poppins font-semibold relative overflow-hidden"
-                onClick={() => scrollToSection("#contact")}
-              >
-                <motion.span
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: "100%" }}
-                  transition={{ duration: 0.5 }}
-                />
-                <span className="relative">Get Started</span>
-              </Button>
-            </motion.div>
-          </div>
+          {/* CTA Button Removed */}
 
           {/* Mobile Menu Button */}
           <motion.button
