@@ -6,58 +6,58 @@ import { Button } from "@/components/ui/button";
 
 const testimonials = [
   {
-    name: "Sarah Johnson",
-    company: "Bloom Events",
-    role: "Creative Director",
-    quote: "Kites Image transformed our brand identity with stunning visuals that perfectly capture our essence. Their cinematic approach elevated our entire marketing presence and exceeded our expectations.",
+    name: "Maria Gonzalez",
+    company: "Bella Vista Restaurant",
+    role: "Owner & Chef",
+    quote: "Kites Digital transformed our social media presence completely. Our reservations increased by 180% after their visual content campaign. The food photography they created makes every dish look irresistible.",
     rating: 5,
-    avatar: "SJ",
-    project: "Brand Photography"
+    avatar: "MG",
+    project: "Restaurant Marketing"
   },
   {
-    name: "Michael Chen",
-    company: "TechStart Inc.",
-    role: "Marketing Manager", 
-    quote: "The video campaign they created for our product launch exceeded all expectations. Professional, creative, and incredibly effective in driving engagement. ROI increased by 250%.",
+    name: "Jake Mitchell",
+    company: "Iron Forge Gym",
+    role: "Fitness Director", 
+    quote: "Their fitness marketing strategy helped us increase membership by 250% in just 6 months. The motivational video content and targeted campaigns brought in exactly the right audience.",
     rating: 5,
-    avatar: "MC",
-    project: "Product Video Campaign"
+    avatar: "JM",
+    project: "Fitness Marketing Campaign"
   },
   {
-    name: "Emma Rodriguez", 
-    company: "Fashion Forward",
-    role: "Brand Owner",
-    quote: "Working with their team was seamless. They understood our vision and delivered photography that was both artistic and commercially successful. Every shot was perfection.",
+    name: "Sarah Chen", 
+    company: "Premier Auto Detailing",
+    role: "Business Owner",
+    quote: "The before-and-after videos they created showcase our work perfectly. Client bookings doubled after launching their digital marketing campaign. Exceptional ROI and professional service.",
     rating: 5,
-    avatar: "ER",
-    project: "Fashion Photography"
+    avatar: "SC",
+    project: "Automotive Marketing"
   },
   {
-    name: "David Park",
-    company: "Urban Collective",
-    role: "Architect",
-    quote: "Their 3D design work brought our architectural concepts to life in ways we never imagined. Absolutely stunning and incredibly detailed visualization that helped us secure major projects.",
+    name: "Carlos Rivera",
+    company: "Rivera Family Restaurant",
+    role: "Marketing Manager",
+    quote: "Their understanding of local restaurant marketing is phenomenal. The content they create tells our family story beautifully while driving real foot traffic and online orders.",
     rating: 5,
-    avatar: "DP",
-    project: "3D Architectural Visualization"
+    avatar: "CR",
+    project: "Local Restaurant Branding"
   },
   {
-    name: "Lisa Thompson",
-    company: "Creative Studios",
-    role: "Social Media Director",
-    quote: "The social media campaign they crafted resulted in a 300% increase in engagement. Their understanding of visual storytelling is unmatched in the industry.",
+    name: "Amanda Foster",
+    company: "FitLife Wellness Center",
+    role: "Operations Director",
+    quote: "The fitness transformation content and member success stories they produced increased our class bookings by 300%. Their visual storytelling connects with our community perfectly.",
     rating: 5,
-    avatar: "LT",
-    project: "Social Media Campaign"
+    avatar: "AF",
+    project: "Fitness Content Strategy"
   },
   {
-    name: "James Wilson",
-    company: "Tech Innovations",
-    role: "CEO",
-    quote: "Professional, creative, and results-driven. Their digital campaigns have consistently exceeded our ROI expectations. We've been working together for 3 years now.",
+    name: "Mike Thompson",
+    company: "Thompson Auto Sales",
+    role: "General Manager",
+    quote: "Professional car photography and video tours that showcase our inventory beautifully. Online inquiries increased by 220% since starting their automotive marketing program.",
     rating: 5,
-    avatar: "JW",
-    project: "Digital Marketing"
+    avatar: "MT",
+    project: "Automotive Visual Marketing"
   }
 ];
 

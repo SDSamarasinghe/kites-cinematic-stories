@@ -87,23 +87,23 @@ const ModernContact = () => {
     {
       icon: Mail,
       label: "Email",
-      value: "hello@kitesimage.com",
-      href: "mailto:hello@kitesimage.com",
-      description: "Drop us a line anytime"
+      value: "hello@kitesdigital.com",
+      href: "mailto:hello@kitesdigital.com",
+      description: "Get your free consultation"
     },
     {
       icon: Phone,
       label: "Phone",
-      value: "+1 (555) 123-4567",
-      href: "tel:+15551234567",
-      description: "Available 9 AM - 6 PM EST"
+      value: "+1 (555) 987-6543",
+      href: "tel:+15559876543",
+      description: "Available 8 AM - 7 PM EST"
     },
     {
       icon: MapPin,
-      label: "Studio",
-      value: "123 Creative Ave, Design District",
+      label: "Office",
+      value: "456 Digital Drive, Marketing Hub",
       href: "https://maps.google.com",
-      description: "Visit us for consultations"
+      description: "Schedule a strategy session"
     }
   ];
 
@@ -130,7 +130,7 @@ const ModernContact = () => {
           </motion.div>
           
           <h2 className="font-playfair text-4xl md:text-6xl font-bold text-foreground mb-6">
-            Let's Capture Your
+            Let's Grow Your
             <motion.span 
               className="block bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
               animate={{ 
@@ -138,13 +138,13 @@ const ModernContact = () => {
               }}
               transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
             >
-              Special Moments
+              Business Together
             </motion.span>
           </h2>
           
           <p className="font-poppins text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Ready to book your photography session? Contact us today to discuss your vision 
-            and let us create beautiful memories that will last a lifetime.
+            Ready to elevate your restaurant, gym, or automotive business? Contact us today for a free 
+            consultation and discover how we can boost your digital presence and drive real results.
           </p>
         </motion.div>
         
