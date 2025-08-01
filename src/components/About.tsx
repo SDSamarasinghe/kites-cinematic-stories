@@ -5,10 +5,11 @@ const About = () => {
     <section id="about" className="py-24 bg-cinematic-gradient">
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="animate-fade-in">
+          <div className="animate-reveal-left">
             <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-6">
               About
-              <span className="block bg-gold-gradient bg-clip-text text-transparent">
+              <span className="block bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_100%] 
+                             bg-clip-text text-transparent animate-text-shimmer">
                 Kites Image
               </span>
             </h2>
@@ -50,14 +51,18 @@ const About = () => {
             </div>
           </div>
           
-          <div className="animate-scale-in" style={{ animationDelay: "0.3s" }}>
-            <div className="relative">
+          <div className="animate-reveal-right" style={{ animationDelay: "0.3s" }}>
+            <div className="relative group">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-secondary/20 rounded-2xl 
+                            blur-xl group-hover:blur-2xl transition-all duration-500 animate-glow"></div>
               <img 
                 src={teamImage} 
                 alt="Kites Image Creative Team"
-                className="w-full rounded-2xl shadow-cinematic"
+                className="relative w-full rounded-2xl shadow-cinematic transform group-hover:scale-[1.02] 
+                         transition-all duration-500"
               />
-              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-background/20 to-transparent"></div>
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-background/30 to-transparent 
+                            group-hover:from-background/10 transition-all duration-500"></div>
             </div>
           </div>
         </div>

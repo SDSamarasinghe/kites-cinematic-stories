@@ -42,13 +42,15 @@ const Services = () => {
       
       <div className="relative max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-6 animate-slide-in-left">
+          <h2 className="font-playfair text-4xl md:text-5xl font-bold text-foreground mb-6 animate-reveal-up">
             Our Creative
-            <span className="block bg-premium-gradient bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_100%] 
+                           bg-clip-text text-transparent animate-text-shimmer">
               Services
             </span>
           </h2>
-          <p className="font-poppins text-lg text-muted-foreground max-w-2xl mx-auto animate-slide-in-right">
+          <p className="font-poppins text-lg text-muted-foreground max-w-2xl mx-auto animate-reveal-up"
+             style={{ animationDelay: '0.3s' }}>
             From concept to creation, we offer comprehensive creative solutions 
             that elevate your brand and connect with your audience.
           </p>
@@ -60,8 +62,8 @@ const Services = () => {
               key={service.title}
               className="group relative bg-card/80 backdrop-blur-glass border border-border/50 
                          hover:border-primary/50 transition-all duration-500 hover:shadow-glow 
-                         hover:scale-105 animate-fade-in overflow-hidden"
-              style={{ animationDelay: `${index * 0.15}s` }}
+                         hover:scale-105 animate-reveal-up overflow-hidden"
+              style={{ animationDelay: `${0.6 + index * 0.15}s` }}
             >
               {/* Gradient Overlay */}
               <div className="absolute inset-0 bg-premium-gradient opacity-0 group-hover:opacity-10 transition-opacity duration-500"></div>
@@ -69,8 +71,9 @@ const Services = () => {
               <CardContent className="relative p-8 text-center z-10">
                 <div className="mb-6 inline-flex items-center justify-center w-20 h-20 
                                bg-primary/10 rounded-full group-hover:bg-primary/20 transition-all duration-500
-                               group-hover:shadow-glow group-hover:animate-float">
-                  <service.icon className="w-10 h-10 text-primary group-hover:scale-125 transition-all duration-500" />
+                               group-hover:shadow-glow group-hover:animate-elastic">
+                  <service.icon className="w-10 h-10 text-primary group-hover:scale-125 group-hover:animate-magnetic 
+                                          transition-all duration-500" />
                 </div>
                 <h3 className="font-playfair text-xl font-semibold text-foreground mb-4 
                                group-hover:text-primary transition-colors duration-300">
