@@ -2,20 +2,26 @@ import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link, useLocation } from "react-router-dom";
 
 const ModernNavigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [portfolioDropdown, setPortfolioDropdown] = useState(false);
   const { scrollY } = useScroll();
+  const location = useLocation();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 50);
   });
 
   useEffect(() => {
+    // Only handle scroll-based navigation on the home page
+    if (location.pathname !== "/") return;
+
     const handleScroll = () => {
-      const sections = ["home", "about", "services", "portfolio", "contact"];
+      const sections = ["home", "about", "portfolio", "contact"];
       let foundSection = null;
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -37,26 +43,63 @@ const ModernNavigation = () => {
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [location.pathname]);
 
   const navItems = [
-    { id: "home", label: "Home", href: "#home" },
-    { id: "about", label: "About", href: "#about" },
-    { id: "services", label: "Services", href: "#services" },
-    { id: "portfolio", label: "Portfolio", href: "#portfolio" },
-    { id: "contact", label: "Contact", href: "#contact" },
+    { id: "home", label: "Home", href: "/" },
+    { id: "about", label: "About", href: "/about" },
+    { 
+      id: "portfolio", 
+      label: "Portfolio", 
+      href: "#", 
+      dropdown: true,
+      submenu: [
+        { label: "Photography", href: "/photography" },
+        { label: "Video Projects", href: "/video-projects" },
+        { label: "Design Projects", href: "/design-projects" }
+      ]
+    },
+    { id: "contact", label: "Contact", href: "/#contact" },
   ];
 
-  const scrollToSection = (href: string) => {
-    if (href === "#home") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    } else {
-      const element = document.querySelector(href);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
+  const handleNavigation = (href: string) => {
+    if (href.startsWith("/#")) {
+      // Handle hash navigation on home page
+      if (location.pathname !== "/") {
+        window.location.href = href;
+      } else {
+        const element = document.querySelector(href.substring(1));
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    } else if (href === "/") {
+      // Navigate to home and scroll to top
+      if (location.pathname === "/") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        // Navigate to home page from other pages
+        window.location.href = "/";
       }
     }
+    // For other routes, let React Router handle it
     setIsOpen(false);
+    setPortfolioDropdown(false);
+  };
+
+  const isActiveRoute = (item: any) => {
+    if (item.id === "home") {
+      return location.pathname === "/";
+    }
+    if (item.id === "about") {
+      return location.pathname === "/about";
+    }
+    if (item.id === "portfolio") {
+      return location.pathname.includes("/photography") || 
+             location.pathname.includes("/video-projects") || 
+             location.pathname.includes("/design-projects");
+    }
+    return false;
   };
 
   const navVariants = {
@@ -137,27 +180,127 @@ const ModernNavigation = () => {
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-              <motion.button
-                key={item.id}
-                onClick={() => scrollToSection(item.href)}
-                className={`relative font-poppins font-medium transition-colors ${
-                  activeSection === item.id
-                    ? "text-primary"
-                    : "text-foreground hover:text-primary"
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {item.label}
-                {activeSection === item.id && (
-                  <motion.div
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
-                    layoutId="activeIndicator"
-                    initial={false}
-                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                  />
+              <div key={item.id} className="relative">
+                {item.dropdown ? (
+                  <div
+                    className="relative group"
+                    onMouseEnter={() => setPortfolioDropdown(true)}
+                    onMouseLeave={() => setPortfolioDropdown(false)}
+                  >
+                    <motion.button
+                      className={`flex items-center font-poppins font-medium transition-colors ${
+                        isActiveRoute(item)
+                          ? "text-primary"
+                          : "text-foreground hover:text-primary"
+                      }`}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {item.label}
+                      <ChevronDown className="w-4 h-4 ml-1" />
+                      {isActiveRoute(item) && (
+                        <motion.div
+                          className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
+                          layoutId="activeIndicator"
+                          initial={false}
+                          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                        />
+                      )}
+                    </motion.button>
+
+                    {/* Dropdown Menu */}
+                    {portfolioDropdown && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 10 }}
+                        className="absolute top-full left-0 mt-1 w-48 bg-background/95 backdrop-blur-xl border border-border/50 rounded-xl shadow-glow overflow-hidden z-50"
+                        onMouseEnter={() => setPortfolioDropdown(true)}
+                        onMouseLeave={() => setPortfolioDropdown(false)}
+                      >
+                        {item.submenu?.map((subItem) => (
+                          <Link
+                            key={subItem.label}
+                            to={subItem.href}
+                            className="block px-4 py-3 text-foreground hover:text-primary hover:bg-muted/50 transition-colors font-poppins"
+                            onClick={() => {
+                              setPortfolioDropdown(false);
+                              window.scrollTo({ top: 0, behavior: 'auto' });
+                            }}
+                          >
+                            {subItem.label}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </div>
+                ) : item.id === "about" ? (
+                  <Link
+                    to={item.href}
+                    className={`relative font-poppins font-medium transition-colors ${
+                      isActiveRoute(item)
+                        ? "text-primary"
+                        : "text-foreground hover:text-primary"
+                    }`}
+                  >
+                    {item.label}
+                    {isActiveRoute(item) && (
+                      <motion.div
+                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
+                        layoutId="activeIndicator"
+                        initial={false}
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      />
+                    )}
+                  </Link>
+                ) : (
+                  <>
+                    {item.href.startsWith("/#") || item.href === "/" ? (
+                      <motion.button
+                        onClick={() => handleNavigation(item.href)}
+                        className={`relative font-poppins font-medium transition-colors ${
+                          isActiveRoute(item)
+                            ? "text-primary"
+                            : "text-foreground hover:text-primary"
+                        }`}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        {item.label}
+                        {isActiveRoute(item) && (
+                          <motion.div
+                            className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
+                            layoutId="activeIndicator"
+                            initial={false}
+                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                          />
+                        )}
+                      </motion.button>
+                    ) : (
+                      <motion.button
+                        onClick={() => handleNavigation(item.href)}
+                        className={`relative font-poppins font-medium transition-colors ${
+                          isActiveRoute(item)
+                            ? "text-primary"
+                            : "text-foreground hover:text-primary"
+                        }`}
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        {item.label}
+                        {isActiveRoute(item) && (
+                          <motion.div
+                            className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
+                            layoutId="activeIndicator"
+                            initial={false}
+                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                          />
+                        )}
+                      </motion.button>
+                    )}
+                  </>
                 )}
-              </motion.button>
+              </div>
             ))}
           </div>
 
@@ -187,18 +330,77 @@ const ModernNavigation = () => {
         >
           <div className="py-6 space-y-4 border-t border-border/20 mt-4">
             {navItems.map((item) => (
-              <motion.button
-                key={item.id}
-                variants={mobileItemVariants}
-                onClick={() => scrollToSection(item.href)}
-                className={`block w-full text-left px-4 py-3 rounded-xl font-poppins font-medium transition-all ${
-                  activeSection === item.id
-                    ? "bg-primary/10 text-primary border border-primary/20"
-                    : "text-foreground hover:bg-card hover:text-primary"
-                }`}
-              >
-                {item.label}
-              </motion.button>
+              <div key={item.id}>
+                {item.dropdown ? (
+                  <div>
+                    <motion.div
+                      variants={mobileItemVariants}
+                      className={`block w-full text-left px-4 py-3 rounded-xl font-poppins font-medium transition-all ${
+                        isActiveRoute(item)
+                          ? "bg-primary/10 text-primary border border-primary/20"
+                          : "text-foreground hover:bg-card hover:text-primary"
+                      }`}
+                    >
+                      {item.label}
+                    </motion.div>
+                    <div className="ml-4 mt-2 space-y-2">
+                      {item.submenu?.map((subItem) => (
+                        <Link
+                          key={subItem.label}
+                          to={subItem.href}
+                          className="block px-4 py-2 text-sm text-muted-foreground hover:text-primary transition-colors"
+                          onClick={() => {
+                            setIsOpen(false);
+                            window.scrollTo({ top: 0, behavior: 'auto' });
+                          }}
+                        >
+                          {subItem.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : item.id === "about" ? (
+                  <Link
+                    to={item.href}
+                    className={`block w-full text-left px-4 py-3 rounded-xl font-poppins font-medium transition-all ${
+                      isActiveRoute(item)
+                        ? "bg-primary/10 text-primary border border-primary/20"
+                        : "text-foreground hover:bg-card hover:text-primary"
+                    }`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <>
+                    {item.href.startsWith("/#") || item.href === "/" ? (
+                      <motion.button
+                        variants={mobileItemVariants}
+                        onClick={() => handleNavigation(item.href)}
+                        className={`block w-full text-left px-4 py-3 rounded-xl font-poppins font-medium transition-all ${
+                          isActiveRoute(item)
+                            ? "bg-primary/10 text-primary border border-primary/20"
+                            : "text-foreground hover:bg-card hover:text-primary"
+                        }`}
+                      >
+                        {item.label}
+                      </motion.button>
+                    ) : (
+                      <motion.button
+                        variants={mobileItemVariants}
+                        onClick={() => handleNavigation(item.href)}
+                        className={`block w-full text-left px-4 py-3 rounded-xl font-poppins font-medium transition-all ${
+                          isActiveRoute(item)
+                            ? "bg-primary/10 text-primary border border-primary/20"
+                            : "text-foreground hover:bg-card hover:text-primary"
+                        }`}
+                      >
+                        {item.label}
+                      </motion.button>
+                    )}
+                  </>
+                )}
+              </div>
             ))}
             
             <motion.div
@@ -208,7 +410,7 @@ const ModernNavigation = () => {
               <Button
                 size="sm"
                 className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-poppins font-semibold"
-                onClick={() => scrollToSection("#contact")}
+                onClick={() => handleNavigation("/#contact")}
               >
                 Get Started
               </Button>
