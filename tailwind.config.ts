@@ -193,7 +193,15 @@ export default {
 					'60%': { transform: 'scale(1.05)' },
 					'80%': { transform: 'scale(0.98)' },
 					'100%': { transform: 'scale(1)' }
+				},
+				'gradient': {
+					'0%': { backgroundPosition: '0% 50%' },
+					'50%': { backgroundPosition: '100% 50%' },
+					'100%': { backgroundPosition: '0% 50%' }
 				}
+			},
+			backgroundSize: {
+				'300%': '300% 300%',
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
@@ -213,7 +221,8 @@ export default {
 				'morph': 'morph 8s ease-in-out infinite',
 				'text-shimmer': 'text-shimmer 3s ease-in-out infinite',
 				'magnetic': 'magnetic 4s ease-in-out infinite',
-				'elastic': 'elastic 0.8s ease-out'
+				'elastic': 'elastic 0.8s ease-out',
+				'gradient': 'gradient 5s ease-in-out infinite'
 			}
 		}
 	},
