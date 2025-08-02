@@ -51,21 +51,32 @@ const VideoProjectsPage = () => {
         
         {/* Hero Section */}
         <section className="relative h-screen flex items-center justify-center overflow-hidden">
-          {/* Background Video */}
+          {/* Background with Beautiful Fallback */}
           <div className="absolute inset-0 w-full h-full">
+            {/* Beautiful Background - Always Visible */}
+            <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/50 to-background">
+              <div className="absolute inset-0 bg-cinematic-gradient opacity-90" />
+              <div className="absolute inset-0 bg-mesh-gradient opacity-20" />
+            </div>
+            
+            {/* Video Layer - Loads on Top */}
             <video
               autoPlay
               muted
               loop
               playsInline
-              className="w-full h-full object-cover"
-              poster="/placeholder.svg"
+              className="absolute inset-0 w-full h-full object-cover opacity-0"
+              onLoadedData={(e) => {
+                // Fade in video when loaded
+                (e.target as HTMLVideoElement).style.opacity = '1';
+                (e.target as HTMLVideoElement).style.transition = 'opacity 1s ease-in-out';
+              }}
             >
               <source src="/videos/videography-category.mp4" type="video/mp4" />
-              {/* Fallback gradient */}
             </video>
-            {/* Video Overlay */}
-            <div className="absolute inset-0 bg-black/60" />
+            
+            {/* Dark Overlay for Text Readability */}
+            <div className="absolute inset-0 bg-black/50" />
           </div>
           
           <motion.div 
@@ -158,21 +169,32 @@ const VideoProjectsPage = () => {
       
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Video */}
+        {/* Background with Beautiful Fallback */}
         <div className="absolute inset-0 w-full h-full">
+          {/* Beautiful Background - Always Visible */}
+          <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/50 to-background">
+            <div className="absolute inset-0 bg-cinematic-gradient opacity-90" />
+            <div className="absolute inset-0 bg-mesh-gradient opacity-20" />
+          </div>
+          
+          {/* Video Layer - Loads on Top */}
           <video
             autoPlay
             muted
             loop
             playsInline
-            className="w-full h-full object-cover"
-            poster="/placeholder.svg"
+            className="absolute inset-0 w-full h-full object-cover opacity-0"
+            onLoadedData={(e) => {
+              // Fade in video when loaded
+              (e.target as HTMLVideoElement).style.opacity = '1';
+              (e.target as HTMLVideoElement).style.transition = 'opacity 1s ease-in-out';
+            }}
           >
             <source src="/videos/videography-hero.mp4" type="video/mp4" />
-            {/* Fallback gradient */}
           </video>
-          {/* Video Overlay */}
-          <div className="absolute inset-0 bg-black/60" />
+          
+          {/* Dark Overlay for Text Readability */}
+          <div className="absolute inset-0 bg-black/50" />
         </div>
         
         <motion.div 

@@ -117,8 +117,15 @@ const AboutPage = () => {
       
       {/* Hero Section */}
       <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Video or Vimeo Embed */}
+        {/* Background with Beautiful Gradient Fallback */}
         <div className="absolute inset-0 w-full h-full">
+          {/* Beautiful Background - Always Visible Initially */}
+          <div className="absolute inset-0 bg-gradient-to-br from-background via-muted/50 to-background">
+            <div className="absolute inset-0 bg-cinematic-gradient opacity-90" />
+            <div className="absolute inset-0 bg-mesh-gradient opacity-20" />
+          </div>
+          
+          {/* Video Layer - Loads on Top */}
           {externalHeroVideoUrl && externalHeroVideoUrl.includes("player.vimeo.com") ? (
             <iframe
               src={externalHeroVideoUrl}
@@ -126,9 +133,14 @@ const AboutPage = () => {
               height="100%"
               frameBorder="0"
               allow="autoplay; fullscreen; picture-in-picture"
-              className="w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover opacity-0"
               title="about-hero"
               style={{ pointerEvents: 'none' }}
+              onLoad={(e) => {
+                // Fade in video when loaded
+                (e.target as HTMLIFrameElement).style.opacity = '1';
+                (e.target as HTMLIFrameElement).style.transition = 'opacity 1s ease-in-out';
+              }}
             />
           ) : (
             <video
@@ -136,13 +148,18 @@ const AboutPage = () => {
               muted
               loop
               playsInline
-              className="w-full h-full object-cover"
-              poster="/placeholder.svg"
+              className="absolute inset-0 w-full h-full object-cover opacity-0"
               src={externalHeroVideoUrl || "/videos/about-hero.mp4"}
+              onLoadedData={(e) => {
+                // Fade in video when loaded
+                (e.target as HTMLVideoElement).style.opacity = '1';
+                (e.target as HTMLVideoElement).style.transition = 'opacity 1s ease-in-out';
+              }}
             />
           )}
-          {/* Video Overlay */}
-          <div className="absolute inset-0 bg-black/60" />
+          
+          {/* Dark Overlay for Text Readability */}
+          <div className="absolute inset-0 bg-black/50" />
         </div>
         
         <motion.div 
