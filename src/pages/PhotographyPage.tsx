@@ -79,13 +79,13 @@ const PhotographyPage = () => {
               Back to Photography
             </Link>
             
-            <motion.div
+            {/* <motion.div
               className="inline-flex items-center px-4 py-2 rounded-full border border-primary/20 bg-primary/5 text-primary text-sm font-poppins font-medium mb-6"
               whileHover={{ scale: 1.05 }}
             >
               <Camera className="w-4 h-4 mr-2" />
               Photography
-            </motion.div>
+            </motion.div> */}
 
             <h1 className="font-playfair text-4xl md:text-7xl font-bold text-foreground mb-6">
               {currentCategory.title}

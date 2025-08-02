@@ -21,7 +21,7 @@ const ModernNavigation = () => {
     if (location.pathname !== "/") return;
 
     const handleScroll = () => {
-      const sections = ["home", "about", "services", "portfolio", "contact"];
+      const sections = ["home", "about", "portfolio", "contact"];
       let foundSection = null;
       for (const section of sections) {
         const element = document.getElementById(section);
@@ -48,7 +48,6 @@ const ModernNavigation = () => {
   const navItems = [
     { id: "home", label: "Home", href: "/" },
     { id: "about", label: "About", href: "/about" },
-    { id: "services", label: "Services", href: "/#services" },
     { 
       id: "portfolio", 
       label: "Portfolio", 
@@ -235,6 +234,25 @@ const ModernNavigation = () => {
                       </motion.div>
                     )}
                   </div>
+                ) : item.id === "about" ? (
+                  <Link
+                    to={item.href}
+                    className={`relative font-poppins font-medium transition-colors ${
+                      isActiveRoute(item)
+                        ? "text-primary"
+                        : "text-foreground hover:text-primary"
+                    }`}
+                  >
+                    {item.label}
+                    {isActiveRoute(item) && (
+                      <motion.div
+                        className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
+                        layoutId="activeIndicator"
+                        initial={false}
+                        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                      />
+                    )}
+                  </Link>
                 ) : (
                   <>
                     {item.href.startsWith("/#") || item.href === "/" ? (
@@ -341,6 +359,18 @@ const ModernNavigation = () => {
                       ))}
                     </div>
                   </div>
+                ) : item.id === "about" ? (
+                  <Link
+                    to={item.href}
+                    className={`block w-full text-left px-4 py-3 rounded-xl font-poppins font-medium transition-all ${
+                      isActiveRoute(item)
+                        ? "bg-primary/10 text-primary border border-primary/20"
+                        : "text-foreground hover:bg-card hover:text-primary"
+                    }`}
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
                 ) : (
                   <>
                     {item.href.startsWith("/#") || item.href === "/" ? (

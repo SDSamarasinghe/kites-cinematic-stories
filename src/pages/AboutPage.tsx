@@ -19,6 +19,7 @@ import {
 } from "lucide-react";
 import ModernNavigation from "@/components/ModernNavigation";
 import ModernFooter from "@/components/ModernFooter";
+import { videoBackgrounds } from "@/config/videoBackgrounds";
 
 const AboutPage = () => {
   const heroRef = useRef(null);
@@ -26,6 +27,9 @@ const AboutPage = () => {
   const valuesRef = useRef(null);
   const teamRef = useRef(null);
   const achievementsRef = useRef(null);
+
+  // Use centralized config for video background
+  const externalHeroVideoUrl = videoBackgrounds.aboutHero;
 
   const isStoryInView = useInView(storyRef, { once: true, margin: "-100px" });
   const isValuesInView = useInView(valuesRef, { once: true, margin: "-100px" });
@@ -113,8 +117,33 @@ const AboutPage = () => {
       
       {/* Hero Section */}
       <section ref={heroRef} className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-background via-background/90 to-muted/30" />
-        <div className="absolute inset-0 bg-mesh-gradient opacity-20" />
+        {/* Background Video or Vimeo Embed */}
+        <div className="absolute inset-0 w-full h-full">
+          {externalHeroVideoUrl && externalHeroVideoUrl.includes("player.vimeo.com") ? (
+            <iframe
+              src={externalHeroVideoUrl}
+              width="100%"
+              height="100%"
+              frameBorder="0"
+              allow="autoplay; fullscreen; picture-in-picture"
+              className="w-full h-full object-cover"
+              title="about-hero"
+              style={{ pointerEvents: 'none' }}
+            />
+          ) : (
+            <video
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover"
+              poster="/placeholder.svg"
+              src={externalHeroVideoUrl || "/videos/about-hero.mp4"}
+            />
+          )}
+          {/* Video Overlay */}
+          <div className="absolute inset-0 bg-black/60" />
+        </div>
         
         <motion.div 
           className="relative z-10 text-center max-w-4xl mx-auto px-6"
